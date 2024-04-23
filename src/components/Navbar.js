@@ -8,7 +8,7 @@ export default function Navbar() {
     return (
     <div className="bg-gray-800 py-4">        
         <nav className="container mx-auto flex items-center justify-between">
-            <Link to="/" className="text-white text-lg font-bold">SKREBL</Link>
+            <Link to="/" className="text-white text-lg font-bold lg:ml-0 ml-4">SKREBL</Link>
             <ul className="flex">
                 <li>
                     <Link to="/login" className={classNames.greenButton}>Login</Link>
