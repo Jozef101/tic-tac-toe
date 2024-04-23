@@ -1,20 +1,20 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Pricing from './components/Pricing';
-import About from './components/About';
+import Login from './components/Login';
 import Home from './components/Home';
 import { Route, Routes } from 'react-router-dom';
+import SignIn from './components/SignIn';
 
 function App() {
- 
+ console.log(window.location.pathname)
   return (
   <>
     <Navbar />
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-in" element={<SignIn />} />
       </Routes>
     </div>
   </>
