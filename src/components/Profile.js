@@ -4,18 +4,18 @@ import { useAuth } from './contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Profile() {
-    const [error, seterror] = useState("")
+    const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
     const navigate = useNavigate()
 
     async function handleLogout() {
-        seterror('')
+        setError('')
         navigate("/")
         try {
             await logout()
-            console.log("logout successfull")
+            console.log("logout")
         } catch {
-            seterror('Failed to logout')
+            setError('Failed to logout')
         }
     }
 
