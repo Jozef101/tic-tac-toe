@@ -30,14 +30,14 @@ export default function Signup() {
             <Card.Body>
                 <h2 className='text-center mb-4'>Prihlásenie</h2>
                 {error && <Alert variant='danger'>{error}</Alert>}
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} id="login">
                     <Form.Group id='email'>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type='email' ref={emailRef} required></Form.Control>
+                        <Form.Control type='email' ref={emailRef} required autoComplete="current-email"></Form.Control>
                     </Form.Group>
                     <Form.Group id='password'>
                         <Form.Label>Heslo</Form.Label>
-                        <Form.Control type='password' ref={passwordRef} required></Form.Control>
+                        <Form.Control type='password' ref={passwordRef} required autoComplete="current-password"></Form.Control>
                     </Form.Group>
                     <Button disabled={loading} type='submit' className='w-100 mt-4'>Prihlásiť sa</Button>
                 </Form>

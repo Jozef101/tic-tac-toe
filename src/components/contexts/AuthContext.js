@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../../firebase'
+import { setIsLogged } from '../auth'
 
 const AuthContext = React.createContext()
 
@@ -17,12 +18,12 @@ export function AuthProvider({ children }) {
     }
 
     function login(email, password) {
-        console.log("isLoggedIn")
         return auth.signInWithEmailAndPassword(email, password)
     }
 
     function logout() {
         return auth.signOut()
+        setIsLogged(false)
     }
 
     function resetPassword(email) {

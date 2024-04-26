@@ -9,10 +9,10 @@ import { AuthProvider } from './components/contexts/AuthContext';
 import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
-import { useAuth } from './components/contexts/AuthContext';
 import Products from './components/Products';
-import PrivateRoutes from './components/PrivateRoutes';
 import ForgottenPassword from './components/ForgottenPassword';
+import LogoutButton from './components/LogoutButton';
+import { getIsLogged } from './components/auth';
 
 function AuthRoute({ element }) {
   return (
@@ -31,7 +31,9 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <AuthProvider>
+        <Navbar />
+      </AuthProvider>
       <div>
           {/* <Router> */}
             <Routes>
@@ -43,6 +45,7 @@ function App() {
               <Route element={<AuthRoute element={<PrivateRoute />} />}>
                 <Route  path="/products" element={<AuthRoute element={<Products />} />} />                
                 <Route exact path="/profile" element={<AuthRoute element={<Profile />} />} />
+                <Route exact path="/logoutButton" element={<AuthRoute element={<LogoutButton />} />} />
               </Route>
             </Routes>
           {/* </Router> */}

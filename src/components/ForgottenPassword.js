@@ -18,8 +18,8 @@ export default function ForgottenPassword() {
             setError('')
             setLoading(true)
             await resetPassword(emailRef.current.value)
-            setMessage('Postupujte podľa pokynov, ktoré sme vám odoslali na email')
-            // navigate("/Login")
+            setMessage('Postupujte podľa pokynov, ktoré sme vám odoslali na email ' + emailRef.current.value)
+            emailRef.current.value = ''
         } catch {
             setError("Obnovenie hesla sa nepodarilo")
         }

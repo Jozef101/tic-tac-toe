@@ -5,7 +5,7 @@ export default function PrivateRoutes() {
     const { currentUser } = useAuth()
     return (
         <>
-        console.log("SOM TU")
+        console.log("SOM TU " + currentUser)
         {currentUser ? <Outlet /> : <Navigate to='/login' />}
         </>
     )

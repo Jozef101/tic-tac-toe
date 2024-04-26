@@ -38,17 +38,17 @@ export default function Signup() {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id='email'>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type='email' ref={emailRef} required></Form.Control>
+                        <Form.Control type='email' ref={emailRef} required autoComplete="current-email"></Form.Control>
                     </Form.Group>
                     <Form.Group id='password'>
                         <Form.Label>Heslo</Form.Label>
-                        <Form.Control type='password' ref={passwordRef} required></Form.Control>
+                        <Form.Control type='password' ref={passwordRef} required autoComplete="current-password"></Form.Control>
                     </Form.Group>
                     <Form.Group id='password-confirm'>
                         <Form.Label>Potvrdenie hesla</Form.Label>
-                        <Form.Control type='password' ref={passwordConfirmationRef} required></Form.Control>
+                        <Form.Control type='password' ref={passwordConfirmationRef} required autoComplete="current-password"></Form.Control>
                     </Form.Group>
-                    <Button disabled={loading} type='submit' className='w=100 mt-4'>Registrovať</Button>
+                    <Button disabled={loading} type='submit' className='w-100 mt-4'>Registrovať</Button>
                 </Form>
             </Card.Body>
             <div className='w-100 text-center mt-2'>
