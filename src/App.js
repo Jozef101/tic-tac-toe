@@ -5,14 +5,16 @@ import Home from './components/Home';
 import { Route, Routes, BrowserRouter as Router} from 'react-router-dom';
 import SignIn from './components/SignIn';
 import { Container } from 'react-bootstrap';
-import { AuthProvider } from './components/contexts/AuthContext';
+import { AuthProvider, useAuth } from './components/contexts/AuthContext';
 import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import Products from './components/Products';
 import ForgottenPassword from './components/ForgottenPassword';
 import LogoutButton from './components/LogoutButton';
-import { getIsLogged } from './components/auth';
+import AnonymousRoute from './components/AnonymousRoute';
+import Signup from './components/Signup';
+
 
 function AuthRoute({ element }) {
   return (
@@ -27,29 +29,33 @@ function AuthRoute({ element }) {
 }
 
 function App() {
-  const auth = null
 
   return (
     <>
       <AuthProvider>
         <Navbar />
-      </AuthProvider>
       <div>
-          {/* <Router> */}
             <Routes>
+
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/login" element={<AuthRoute element={<Login />} />} />
-              <Route exact path="/sign-in" element={<AuthRoute element={<SignIn />} />} />
-              <Route exact path="/dashboard" element={<AuthRoute element={<Dashboard />} />} />
-              <Route exact path="/forgotten-password" element={<AuthRoute element={<ForgottenPassword />} />} />
-              <Route element={<AuthRoute element={<PrivateRoute />} />}>
-                <Route  path="/products" element={<AuthRoute element={<Products />} />} />                
-                <Route exact path="/profile" element={<AuthRoute element={<Profile />} />} />
-                <Route exact path="/logoutButton" element={<AuthRoute element={<LogoutButton />} />} />
+              <Route exact path="/dashboard" element={<Dashboard />}/>
+              
+              <Route element={<AnonymousRoute />} >
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/sign-in" element={<SignIn />}/>
+                <Route exact path="/sign-up" element={<Signup />}/>
+                <Route exact path="/forgotten-password" element={<ForgottenPassword />} />
               </Route>
+
+              <Route element={<PrivateRoute />} >
+                <Route  path="/products" element={<Products />} />                
+                <Route exact path="/profile" element={<Profile />} />
+                <Route exact path="/logoutButton" element={<LogoutButton />} />
+              </Route>
+
             </Routes>
-          {/* </Router> */}
       </div>
+      </AuthProvider>
     </>
   );
 }

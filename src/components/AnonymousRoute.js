@@ -2,12 +2,12 @@ import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from './contexts/AuthContext'
 
-export default function PrivateRoute() {
+export default function AnonymousRoute() {
     const { currentUser } = useAuth()
-    console.log(currentUser)
+    console.log("CURRENT USER =" + currentUser)
   return (
     <>    
-        {currentUser ? <Outlet /> : <Navigate to="/login" />}
+        {!currentUser ? <Outlet /> : <Navigate to="/" />}
     </>
   )
 }
